@@ -1,8 +1,15 @@
 <h1>Portfolio Items</h1>
+<!-- Below we have 2 ways of having the same (link), the better practice is to use the
+link_to method -->
+<!-- <a href="new/">Create New Item</a> -->
+<%= link_to "Create New Item", new_portfolio_path %>
 
 <% @portfolio_items.each do |item| %>
   <p><%= item.title %></p>
   <p><%= item.subtitle %></p>
   <p><%= item.body %></p>
   <%= image_tag item.thumb_image unless item.thumb_image.nil? %>
+  <%= link_to "Edit", edit_portfolio_path(item.id) %>
+  <!-- <a href="<%= item.id%>/edit">Edit Two</a>
+  "This is the same as the code above except the one on top is cleaner"-->
 <% end %>
